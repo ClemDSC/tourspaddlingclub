@@ -57,13 +57,14 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "end", md: "start" }}>
-          <Text
+          <Link
             textAlign={useBreakpointValue({ base: "right", md: "left" })}
             fontFamily={"heading"}
             color={"white"}
+            href="/"
           >
             Logo
-          </Text>
+          </Link>
         </Flex>
 
         <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -190,7 +191,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? "#"}
+        href={href}
         justify={"space-between"}
         align={"center"}
         _hover={{
@@ -240,7 +241,7 @@ const NAV_ITEMS = [
     label: "Le club",
     children: [
         {
-            label: "Le club",
+            label: "Qui sommes-nous ?",
             subLabel: "Découvrez nos membres",
             href: '/club',
           },
