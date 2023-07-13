@@ -260,7 +260,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Boutique",
-    href: "/shop",
+    href: "https://www.vestiaire-officiel.com/shop/tours-paddling-club",
   },
   {
     label: "Actualité",
