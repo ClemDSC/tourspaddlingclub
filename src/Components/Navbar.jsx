@@ -62,8 +62,9 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={"white"}
             href="/"
+            fontSize={24}
           >
-            Logo
+            Tours Paddling Club
           </Link>
         </Flex>
 
@@ -259,7 +260,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Boutique",
-    href: "/shop",
+    href: "https://www.vestiaire-officiel.com/shop/tours-paddling-club",
   },
   {
     label: "Actualité",

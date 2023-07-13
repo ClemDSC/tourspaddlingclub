@@ -1,12 +1,21 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
+import { ArrowUpIcon } from "@chakra-ui/icons";
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const scrollToBottom = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
+  return (
+    <Button
+    color='blue.300'
+      variant="outline"
+      rightIcon={<ArrowUpIcon />}
+      onClick={scrollToBottom}
+      width={{ md: 'fit-content'}}
+      marginInline={'auto'}
+    >
+      Haut de page
+    </Button>
+  );
 }
