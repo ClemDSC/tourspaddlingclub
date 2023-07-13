@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.slick-next, .slick-prev, ul.slick-dots{
+  display: none!important;
+}
+
+.slick-slide img {
+  display: block;
+  max-height: 500px;
+  width: 100%;
+  filter: opacity(0.6);
+}

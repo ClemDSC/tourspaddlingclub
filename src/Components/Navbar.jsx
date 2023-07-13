@@ -62,8 +62,9 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={"white"}
             href="/"
+            fontSize={24}
           >
-            Logo
+            Tours Paddling Club
           </Link>
         </Flex>
 
