@@ -35,7 +35,7 @@ export default function HomeClub() {
           p={6}
           as={"a"}
           cursor={"pointer"}
-          href="/join-us"
+          href="/club/join-us"
           display={"flex"}
           flexDirection="column"
           alignItems={"center"}
@@ -45,7 +45,7 @@ export default function HomeClub() {
           }}
         >
           <Image src={Picto1} alt="pictogramme surf" width={"80px"} mb={4} />
-          <Text as="b" href="/join-us">
+          <Text as="b" href="/club/join-us">
             Nous rejoindre
           </Text>
           <Text as="cite">Tarifs et bulletin d'adhésion au club</Text>
@@ -55,6 +55,7 @@ export default function HomeClub() {
           rounded={"lg"}
           p={6}
           as={"a"}
+          target="_blank"
           cursor={"pointer"}
           href="https://www.vestiaire-officiel.com/shop/tours-paddling-club"
           display={"flex"}
