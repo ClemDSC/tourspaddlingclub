@@ -34,6 +34,7 @@ export default function HomeClub() {
           rounded={"lg"}
           p={6}
           as={"a"}
+          cursor={"pointer"}
           href="/join-us"
           display={"flex"}
           flexDirection="column"
@@ -54,6 +55,7 @@ export default function HomeClub() {
           rounded={"lg"}
           p={6}
           as={"a"}
+          cursor={"pointer"}
           href="https://www.vestiaire-officiel.com/shop/tours-paddling-club"
           display={"flex"}
           flexDirection="column"

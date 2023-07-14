@@ -10,6 +10,8 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { BsPinterest } from "react-icons/bs";
+
 import LogoTPC from "../Assets/logo-tpc.png"
 
 const Logo = (props) => {
@@ -84,6 +86,9 @@ export default function Footer() {
             </SocialButton>
             <SocialButton label={"Instagram"} href={"http://www.instagram.com/tourspaddlingclub/"}>
               <FaInstagram color="#0689DE" />
+            </SocialButton>
+            <SocialButton label={"Pinterest"} href={"https://www.pinterest.fr/tourspaddling/"}>
+              <BsPinterest color="#0689DE" />
             </SocialButton>
           </Stack>
         </Container>

@@ -29,7 +29,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("blue.300", "blue.800")}
         color={useColorModeValue("white", "white")}
-        minH={"60px"}
+        minH={{base:'60px', md:"80px"}}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
