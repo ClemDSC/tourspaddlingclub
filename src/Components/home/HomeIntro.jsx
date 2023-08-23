@@ -2,8 +2,8 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 
 export default function HomeIntro() {
   return (
-    <Flex flexDirection="column" as="article" px={{base:'4', md:"24"}} pt='8'  gap={"4"}>
-      <Heading as="h2" align="center" pb="2">
+    <Flex flexDirection="column" as="article" px={{base:'4', md:"24"}} pt='8' gap={"4"} maxWidth={"1400px"} mx={'auto'}>
+      <Heading as="h2" align="center" pb="2" fontFamily="Raleway">
         Bienvenue !
       </Heading>
       <Text>

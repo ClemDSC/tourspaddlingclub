@@ -5,7 +5,8 @@ import { Box, Image } from "@chakra-ui/react";
 import Club from "../../Assets/club.jpg";
 import Chenonceau from "../../Assets/chenonceau.jpg";
 import Nature from "../../Assets/nature.jpg";
-import Logo from "../../Assets/logo-tpc.png"
+
+import Logo from "../svg/Logo";
 
 export default function SliderHome() {
   const settings = {
@@ -21,13 +22,13 @@ export default function SliderHome() {
   return (
     <Box position={"relative"}>
       <Slider {...settings}>
-        <div className="container">
+        <Box className="container">
           <Image
             objectFit="cover"
             src={Club}
             alt="Tours Paddling Club - club"
           />
-        </div>
+        </Box>
         <div className="container">
           <Image
             objectFit="cover"
@@ -43,7 +44,15 @@ export default function SliderHome() {
           />
         </div>
       </Slider>
-      <Image position={"absolute"} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} width={{base:'140px', md:'300px'}} src={Logo} alt="Tours Paddling Club - logo" />
+      <Box className="main-logo"
+        position={"absolute"}
+        top={"50%"}
+        left={"50%"}
+        transform={"translate(-50%, -50%)"}
+        width={{ base: "140px", md: "300px" }}
+      >
+        <Logo width={{ base: 140, md: 300 }} />
+      </Box>
     </Box>
   );
 }

@@ -37,7 +37,7 @@ export default function JoinUs() {
           Rejoignez-nous
         </AbsoluteCenter>
       </Box>
-      <Text align={"center"} p={{ md: 4 }}>
+      <Text align={"center"} p={{ md: 4 }} maxWidth={'1100px'} mx={'auto'}>
         Pour rejoindre l’association Tours Paddling Club, vous pouvez
         télécharger notre{" "}
         <Text

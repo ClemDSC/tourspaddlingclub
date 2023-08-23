@@ -20,6 +20,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import Logo from "./svg/Logo";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -29,9 +30,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("blue.300", "blue.800")}
         color={useColorModeValue("white", "white")}
-        minH={{base:'60px', md:"80px"}}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
+        px={{ base: 4, md: 10}}
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("white", "white")}
@@ -60,11 +59,16 @@ export default function Navbar() {
           <Link
             textAlign={useBreakpointValue({ base: "right", md: "left" })}
             fontFamily={"heading"}
-            color={"white"}
             href="/"
-            fontSize={24}
+            display={'flex'}
+            alignItems={'center'}
+            gap={'16px'}
+            _hover={{
+              textDecoration: "none",
+            }}
           >
-            Tours Paddling Club
+            <Logo width={80} />
+            {/* <Text as={'h1'} color={"white"} fontSize={36} pl={{ base: 0, md: 6 }} display={{ base: "none", md: "flex" }}>Tours Paddling Club</Text> */}
           </Link>
         </Flex>
 
@@ -95,9 +99,10 @@ const DesktopNav = () => {
               <Link
                 p={2}
                 href={navItem.href}
-                fontSize={"sm"}
+                fontSize={"20px"}
                 fontWeight={500}
                 color={linkColor}
+                fontStyle={"italic"}
                 _hover={{
                   textDecoration: "none",
                   color: linkHoverColor,
@@ -239,13 +244,13 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "Le club",
+    label: "Le Club",
     children: [
-        {
-            label: "Qui sommes-nous ?",
-            subLabel: "Découvrez nos membres",
-            href: '/club',
-          },
+        // {
+        //     label: "Qui sommes-nous ?",
+        //     subLabel: "",
+        //     href: '/club',
+        //   },
       {
         label: "Nos activités",
         subLabel: "",
@@ -269,5 +274,9 @@ const NAV_ITEMS = [
   {
     label: "Contact",
     href: "/contact",
+  },
+  {
+    label: "FAQ",
+    href: "/faq",
   },
 ];

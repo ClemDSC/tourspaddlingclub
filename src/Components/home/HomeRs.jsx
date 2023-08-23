@@ -33,7 +33,7 @@ export default function HomeRs() {
   };
 
   return (
-    <Center py={{ base: 4, md: 8 }}>
+    <Center py={{ base: 4}} pt={{ md: 14}} pb={{ md: 8}} maxWidth={"1400px"} mx={'auto'}>
       <Flex gap={{ base: "24px" }}>
         <SocialButton
           label={"Facebook"}

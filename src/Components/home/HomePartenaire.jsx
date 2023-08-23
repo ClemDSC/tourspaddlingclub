@@ -12,7 +12,7 @@ import DecathToursNord from "../../Assets/logos/logo-decathlon-Tours-nord.bmp";
 
 export default function HomePartenaire() {
   return (
-    <Box>
+    <Box as="article" maxWidth={"1400px"} mx={'auto'} pb={'2rem'} pt={{ md: 10}}>
       <Box position="relative" padding="10">
         <Divider />
         <AbsoluteCenter

@@ -51,7 +51,7 @@ export default function Footer() {
     >
       <Container
         as={Stack}
-        py={4}
+        py={8}
         spacing={4}
         justify={"center"}
         align={"center"}
