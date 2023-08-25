@@ -31,7 +31,7 @@ export default function Weather() {
           Conditions climatiques
         </AbsoluteCenter>
       </Box>
-      <Flex gap={4} alignItems={"center"}>
+      <Flex gap={4} alignItems={"center"} flexDirection={{ base: "column", md: "row"}}>
         <iframe
           title="weather"
           src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8859536&language=fr&region=FR&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius"
@@ -42,7 +42,7 @@ export default function Weather() {
           frameborder="0"
           className="iframe-weather"
         ></iframe>
-        <SimpleGrid spacing={4} templateColumns="repeat(3, 1fr)" width={"100%"}>
+        <SimpleGrid spacing={4} templateColumns={{ md:"repeat(3, 1fr)"}} width={"100%"}>
           <Card>
             <CardHeader>
               <Heading size="md" textAlign={"center"} mb={2}>
