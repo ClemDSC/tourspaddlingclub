@@ -31,33 +31,50 @@ export default function SliderSUP() {
   const cards = [
     {
       title: "Stand up paddle",
+      text: "Sortie sur le Cher - château de Chenonceaux",
+      image: "https://i.ibb.co/LYy6Lfr/chenonceau.jpg"
+    },
+    {
+      title: "Stand up paddle",
+      text: "Sortie sur le Cher",
+      image:
+        "https://i.ibb.co/JQCFxkF/cher.jpg",
+    },
+    {
+      title: "Stand up paddle",
+      text: "Sortie sur le Cher",
+      image:
+        "https://i.ibb.co/bR3WfGX/cher2.jpg",
+    },
+    {
+      title: "Stand up paddle",
       text: "Sortie sur le Cher - barrage de Larçay",
       image:
-        "https://scontent-cdg4-2.xx.fbcdn.net/v/t39.30808-6/312115672_523489326451049_1094380217339389270_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=8fuapTjIypcAX-5wQy-&_nc_ht=scontent-cdg4-2.xx&oh=00_AfDFIr3ZrCq8h1yKVK_SF9vXnn02_2qlZ4H2xHXIDIeVyA&oe=64B6BF48",
+        "https://i.ibb.co/fDwGGWX/larcay.jpg",
     },
     {
       title: "Stand up paddle",
       text: "Sortie sur le Cher",
       image:
-        "https://scontent-cdg4-2.xx.fbcdn.net/v/t39.30808-6/311990507_523490233117625_9007529452982041540_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=tisvkUddkq4AX9I6Q1z&_nc_ht=scontent-cdg4-2.xx&oh=00_AfDf1E2LXHRmvNx6MbH3OlhAcF9wxxnRK8_h_oVUmSs3wQ&oe=64B6E190",
+        "https://i.ibb.co/C2zRrSm/sup2.jpg",
     },
     {
       title: "Stand up paddle",
       text: "Sortie sur le Cher",
       image:
-        "https://scontent-cdg4-2.xx.fbcdn.net/v/t39.30808-6/312109793_523491273117521_5972877111194529427_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=gfUkkJRjU6EAX-zukrF&_nc_ht=scontent-cdg4-2.xx&oh=00_AfB06KFIkKSyK70c80ZcB2rMUobQqFsCb6iH3l0nRCO2Sg&oe=64B73846",
+        "https://i.ibb.co/FqVHCvH/supr5.jpg",
     },
     {
       title: "Stand up paddle",
       text: "Sortie sur le lac des Peupleraies",
       image:
-        "https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/315310575_549225097210805_448007552651354923_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=aN5MHiLWD7IAX9hZ8cN&_nc_ht=scontent-cdg4-1.xx&oh=00_AfCGXymAoY2EP5MNwl258H90f-sp7KHspUsREeYz2Set0Q&oe=64B76508",
+        "https://i.ibb.co/3s90d8d/sup.jpg",
     },
     {
       title: "Stand up paddle",
-      text: "Sortie sur le Cher",
+      text: "Sortie sur le Cher - barrage de Larçay",
       image:
-        "https://scontent-cdg4-3.xx.fbcdn.net/v/t39.30808-6/315294335_549224907210824_3798630782124445583_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=Kr0aD4prwPsAX9po-lW&_nc_ht=scontent-cdg4-3.xx&oh=00_AfANLlsm-YS4LB3FQTKG_wu8NXJxcq3LB9IAOI5xyTidTQ&oe=64B660BB",
+        "https://i.ibb.co/Rbsr9DQ/sup4.jpg",
     },
   ];
 

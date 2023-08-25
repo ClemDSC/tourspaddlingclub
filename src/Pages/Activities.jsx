@@ -2,6 +2,7 @@ import { Box, Divider, AbsoluteCenter } from "@chakra-ui/react";
 
 import SliderSUP from "../Components/activities/SliderSUP";
 import SliderWing from "../Components/activities/SliderWing";
+import SliderSUPother from "../Components/activities/SliderSUPother";
 
 export default function Activities() {
   return (
@@ -19,6 +20,7 @@ export default function Activities() {
       </Box>
       <SliderSUP />
       <SliderWing />
+      <SliderSUPother />    
     </Box>
   );
 }

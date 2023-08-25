@@ -11,7 +11,7 @@ import {
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 
-export default function SliderWing() {
+export default function SliderSUPother() {
   const settings = {
     dots: true,
     arrows: false,
@@ -30,24 +30,33 @@ export default function SliderWing() {
 
   const cards = [
     {
-      title: "Wing",
-      text: "Sortie sur le lac des Peupleraies",
-      image: "https://i.ibb.co/8r0P2x5/wing3.jpg",
+      title: "Stand up paddle Dragon",
+      text: "Sortie avec le Dragon",
+      image: "https://i.ibb.co/FJXWybX/dragon1.jpg"
     },
     {
-      title: "Wing",
-      text: "Sortie sur le lac des Peupleraies",
-      image: "https://i.ibb.co/5hMQxwv/wing2.jpg",
+      title: "Stand up paddle Goliath",
+      text: "Sortie avec le Goliath",
+      image:
+        "https://i.ibb.co/TvfbGfB/goliath.jpg",
     },
     {
-      title: "Wing",
-      text: "Sortie sur le lac des Peupleraies",
-      image: "https://i.ibb.co/ZJ6GLKs/wing4.jpg",
+      title: "Stand up paddle Dragon",
+      text: "Sortie avec le Dragon",
+      image:
+        "https://i.ibb.co/ZzZTDDG/dragon3.jpg",
     },
     {
-      title: "Wing",
-      text: "Sortie sur le lac des Peupleraies",
-      image: "https://i.ibb.co/8dCRc5v/wing.jpg",
+      title: "Stand up paddle Goliath",
+      text: "Sortie avec le Goliath",
+      image:
+        "https://i.ibb.co/7SjbbTZ/goliath2.jpg",
+    },
+    {
+      title: "Stand up paddle Dragon",
+      text: "Sortie avec le Dragon",
+      image:
+        "https://i.ibb.co/68Dwn58/dragon2.jpg",
     },
   ];
 
@@ -57,7 +66,6 @@ export default function SliderWing() {
       height={"600px"}
       width={"full"}
       overflow={"hidden"}
-      mb={4}
     >
       <IconButton
         aria-label="left-arrow"
