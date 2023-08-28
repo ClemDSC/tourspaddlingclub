@@ -23,10 +23,6 @@ export default function HomeIntro() {
         adhérents des entraînements loisirs et compétitions tout au long de
         l’année, ainsi que de nombreuses sorties en Touraine.
       </Text>
-      <Text as="b">
-        Venez nous rejoindre au Lac des Peupleraies à Tours le dimanche
-        après-midi à partir de 14h !
-      </Text>
     </Flex>
   );
 }
