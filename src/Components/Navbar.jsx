@@ -30,7 +30,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("blue.300", "blue.800")}
         color={useColorModeValue("white", "white")}
-        px={{ base: 4, md: 10}}
+        px={{ base: 4, md: 10 }}
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("white", "white")}
@@ -60,9 +60,9 @@ export default function Navbar() {
             textAlign={useBreakpointValue({ base: "right", md: "left" })}
             fontFamily={"heading"}
             href="/"
-            display={'flex'}
-            alignItems={'center'}
-            gap={'16px'}
+            display={"flex"}
+            alignItems={"center"}
+            gap={"16px"}
             _hover={{
               textDecoration: "none",
             }}
@@ -179,8 +179,8 @@ const MobileNav = () => {
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
-      borderBottom='1px' 
-      borderColor='gray.200'
+      borderBottom="1px"
+      borderColor="gray.200"
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
@@ -246,11 +246,6 @@ const NAV_ITEMS = [
   {
     label: "Le Club",
     children: [
-        // {
-        //     label: "Qui sommes-nous ?",
-        //     subLabel: "",
-        //     href: '/club',
-        //   },
       {
         label: "Nos activités",
         subLabel: "",
@@ -264,12 +259,29 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Boutique",
+    label: "La Boutique",
     href: "https://www.vestiaire-officiel.com/shop/tours-paddling-club",
   },
   {
-    label: "Actualité",
-    href: "/actu",
+    label: "Le Blog",
+    href: "/blog",
+    children: [
+      {
+        label: "Conseils",
+        subLabel: "",
+        href: "/blog/tips",
+      },
+      {
+        label: "Actualités",
+        subLabel: "",
+        href: "/blog/actu",
+      },
+      {
+        label: "Nos sorties",
+        subLabel: "",
+        href: "/blog/sessions",
+      },
+    ],
   },
   {
     label: "Contact",

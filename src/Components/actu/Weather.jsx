@@ -31,7 +31,7 @@ export default function Weather() {
           Conditions climatiques
         </AbsoluteCenter>
       </Box>
-      <Flex gap={4} alignItems={"center"} flexDirection={{ base: "column", md: "row"}}>
+      <Flex gap={4} alignItems={"center"} flexDirection={{ base: "column", md: "row"}} pb={4}>
         <iframe
           title="weather"
           src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8859536&language=fr&region=FR&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius"
