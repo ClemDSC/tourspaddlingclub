@@ -14,7 +14,7 @@ export default function HomeRs() {
       <Button
         bg={useColorModeValue("white", "whiteAlpha.100")}
         border={"1px"}
-        borderColor={"#0689DE"}
+        borderColor={"#0068AD"}
         rounded={"full"}
         w={16}
         h={16}
@@ -39,25 +39,25 @@ export default function HomeRs() {
           label={"Facebook"}
           href={"http://www.facebook.com/tourspaddlingclub"}
         >
-          <FaFacebookF color="#0689DE" size="24px" />
+          <FaFacebookF color="#0068AD" size="24px" />
         </SocialButton>
         <SocialButton
           label={"YouTube"}
           href={"http://www.youtube.com/channel/UC2Cp8ELELRfNu6vHdAtcNhQ"}
         >
-          <FaYoutube color="#0689DE" size="24px" />
+          <FaYoutube color="#0068AD" size="24px" />
         </SocialButton>
         <SocialButton
           label={"Instagram"}
           href={"http://www.instagram.com/tourspaddlingclub/"}
         >
-          <FaInstagram color="#0689DE" size="24px" />
+          <FaInstagram color="#0068AD" size="24px" />
         </SocialButton>
         <SocialButton
           label={"Pinterest"}
           href={"https://www.pinterest.fr/tourspaddling/"}
         >
-          <BsPinterest color="#0689DE" size="24px" />
+          <BsPinterest color="#0068AD" size="24px" />
         </SocialButton>
       </Flex>
     </Center>

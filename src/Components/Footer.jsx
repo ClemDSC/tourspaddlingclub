@@ -25,7 +25,7 @@ const SocialButton = ({ children, label, href }) => {
     <chakra.button
       bg={useColorModeValue("white", "whiteAlpha.100")}
       border={'1px'}
-      borderColor={"#0689DE"}
+      borderColor={"#0068AD"}
       rounded={"full"}
       w={8}
       h={8}
@@ -79,16 +79,16 @@ export default function Footer() {
           </Flex>
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Facebook"} href={"http://www.facebook.com/tourspaddlingclub"}>
-              <FaFacebookF color="#0689DE" />
+              <FaFacebookF color="#0068AD" />
             </SocialButton>
             <SocialButton label={"YouTube"} href={"http://www.youtube.com/channel/UC2Cp8ELELRfNu6vHdAtcNhQ"}>
-              <FaYoutube color="#0689DE" />
+              <FaYoutube color="#0068AD" />
             </SocialButton>
             <SocialButton label={"Instagram"} href={"http://www.instagram.com/tourspaddlingclub/"}>
-              <FaInstagram color="#0689DE" />
+              <FaInstagram color="#0068AD" />
             </SocialButton>
             <SocialButton label={"Pinterest"} href={"https://www.pinterest.fr/tourspaddling/"}>
-              <BsPinterest color="#0689DE" />
+              <BsPinterest color="#0068AD" />
             </SocialButton>
           </Stack>
         </Container>

@@ -18,7 +18,6 @@ import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
 } from "@chakra-ui/icons";
 import Logo from "./svg/Logo";
 
@@ -86,9 +85,9 @@ export default function Navbar() {
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue("white", "white");
-  const linkHoverColor = useColorModeValue("gray.800", "gray.200");
+  const linkHoverColor = useColorModeValue("white", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
-  const popoverLink = useColorModeValue("blue.300", "gray.800");
+  const popoverLink = useColorModeValue("#0068AD", "gray.800");
 
   return (
     <Stack direction={"row"} spacing={4}>
@@ -106,6 +105,7 @@ const DesktopNav = () => {
                 _hover={{
                   textDecoration: "none",
                   color: linkHoverColor,
+                  fontWeight: 600,
                 }}
               >
                 {navItem.label}
@@ -144,30 +144,19 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("blue.50", "gray.900") }}
+      _hover={{ bg: useColorModeValue("gray.50", "gray.900") }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
-            _groupHover={{ color: "blue.400" }}
+            _groupHover={{ color: "#0068AD" }}
             fontWeight={500}
           >
             {label}
           </Text>
           <Text fontSize={"sm"}>{subLabel}</Text>
         </Box>
-        <Flex
-          transition={"all .3s ease"}
-          transform={"translateX(-10px)"}
-          opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
-          flex={1}
-        >
-          <Icon color={"blue.300"} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
       </Stack>
     </Link>
   );
@@ -196,8 +185,6 @@ const MobileNavItem = ({ label, children, href }) => {
     <Stack onClick={children && onToggle}>
       <Flex
         py={2}
-        as={Link}
-        href={href}
         justify={"space-between"}
         align={"center"}
         _hover={{
