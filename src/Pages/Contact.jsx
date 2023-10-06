@@ -41,7 +41,7 @@ export default function Contact() {
         >
           <Button
             border={"1px"}
-            borderColor={"#0689DE"}
+            borderColor={"#0068AD"}
             rounded={"full"}
             w={16}
             h={16}
@@ -67,7 +67,7 @@ export default function Contact() {
         >
           <Button
             border={"1px"}
-            borderColor={"#0689DE"}
+            borderColor={"#0068AD"}
             rounded={"full"}
             w={16}
             h={16}
@@ -99,7 +99,7 @@ export default function Contact() {
         >
           <Button
             border={"1px"}
-            borderColor={"#0689DE"}
+            borderColor={"#0068AD"}
             rounded={"full"}
             w={16}
             h={16}
@@ -131,7 +131,7 @@ export default function Contact() {
         >
           <Button
             border={"1px"}
-            borderColor={"#0689DE"}
+            borderColor={"#0068AD"}
             rounded={"full"}
             w={16}
             h={16}
