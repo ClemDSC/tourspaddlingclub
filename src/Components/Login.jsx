@@ -6,9 +6,6 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-  FormControl,
-  FormLabel,
-  Input,
   useDisclosure,
 } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
@@ -81,22 +78,6 @@ function Login() {
               />
               <Button colorScheme='linkedin' type="submit">Connexion</Button>
             </form>
-
-            {/* <form onSubmit={handleSubmit}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button type="submit">Connexion</button>
-            </form> */}
           </ModalBody>
         </ModalContent>
       </Modal>
