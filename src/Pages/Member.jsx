@@ -2,7 +2,8 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex } from "@chakra-ui/react";
+import FormArticle from "../Components/member/FormArticle";
 
 function Member() {
   const [authUser, setAuthUser] = useState(null);
@@ -49,11 +50,13 @@ function Member() {
             </p>
             <Button colorScheme='linkedin' onClick={handleLogout}>Déconnexion</Button>
           </Flex>
+          <Divider my={4} />
+          <FormArticle />
         </Box>
       ) : (
         <>
           <p>Vous n'êtes pas autorisé.</p>
-          <button onClick={() => navigate("/")}>Retour à l'accueil</button>
+          <Button colorScheme="linkedin" onClick={() => navigate("/")}>Retour à l'accueil</Button>
         </>
       )}
     </div>
