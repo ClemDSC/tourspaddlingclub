@@ -20,6 +20,7 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import Logo from "./svg/Logo";
+import Login from "./Login";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -90,7 +91,7 @@ const DesktopNav = () => {
   const popoverLink = useColorModeValue("#0068AD", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Stack direction={"row"} align={"center"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -132,6 +133,7 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
+      <Login />
     </Stack>
   );
 };
@@ -174,6 +176,7 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Login />
     </Stack>
   );
 };
