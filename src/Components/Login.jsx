@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -30,7 +29,6 @@ function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("userCredential", userCredential);
         onClose();
         navigate("/member");
       })
@@ -38,18 +36,6 @@ function Login() {
         console.log("error", error);
       });
   };
-
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-
-    //   createUserWithEmailAndPassword(auth, email, password)
-    //     .then((userCredential) => {
-    //       console.log("userCredential", userCredential);
-    //     })
-    //     .catch((error) => {
-    //       console.log("error", error);
-    //     });
-    // };
 
   return (
     <>
