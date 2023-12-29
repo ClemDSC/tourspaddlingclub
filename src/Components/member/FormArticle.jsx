@@ -1,9 +1,10 @@
-import { db } from "../../firebase-config";
-import { uid } from "uid";
+import { Box } from "@chakra-ui/react";
+
 import { useState } from "react";
 
-import { Box } from "@chakra-ui/react";
+import { db } from "../../firebase-config";
 import { set, ref } from "firebase/database";
+import { uid } from "uid";
 
 function FormArticle() {
   const [title, setTitle] = useState("");
@@ -41,7 +42,7 @@ function FormArticle() {
   };
 
   return (
-    <Box width={{md: "60%"}} mx={{md: "auto"}} py={{md: "16px"}}>
+    <Box width={{ md: "60%" }} mx={{ md: "auto" }} py={{ md: "16px" }}>
       <Box>
         <p>
           Le contenu de cet article sera publié dans la rubrique Blog /
@@ -74,7 +75,10 @@ function FormArticle() {
           value={altUrl}
           onChange={(e) => setAltUrl(e.target.value)}
         />
-        <small>Important : la balise alt sert à rendre notre site accessible à tous.</small>
+        <small>
+          Important : la balise alt sert à rendre notre site accessible à tous.
+        </small>
+
         <textarea
           placeholder="Contenu de l'article"
           value={content}
