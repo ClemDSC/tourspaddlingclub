@@ -1,0 +1,90 @@
+[
+    {
+        "id": "1",
+        "name": "Montbazon",
+        "duration": "2h20",
+        "distance": "7,2km",
+        "river": "L'Indre",
+        "imageUrl": "https://i.ibb.co/C2s9Kjd/Montbazon.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Chenonceaux",
+        "duration": "1h30",
+        "distance": "6,5km",
+        "river": "Le Cher",
+        "imageUrl": "https://i.ibb.co/3RnqPGH/Chenonceaux.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Pont-de-Ruan",
+        "duration": "1h30",
+        "distance": "4,7km",
+        "river": "L'Indre",
+        "imageUrl": "https://i.ibb.co/Kzgjw7C/Pont-De-Ruan.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Larçay - Véretz",
+        "duration": "1h45",
+        "distance": "5,5km",
+        "river": "Le Cher",
+        "imageUrl": "https://i.ibb.co/GtnmdfD/Veretz.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Barrage de Larçay",
+        "duration": "2h",
+        "distance": "6,5km",
+        "river": "Le Cher",
+        "imageUrl": "https://i.ibb.co/zQLcb19/Larcay.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Tours - île Balzac",
+        "duration": "1h45",
+        "distance": "5,3km",
+        "river": "Le Cher",
+        "imageUrl": "https://i.ibb.co/VVHXLq3/Balzac.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Montlouis - Tours",
+        "duration": "2h15",
+        "distance": "10,3km",
+        "river": "La Loire",
+        "imageUrl": "https://i.ibb.co/WD3tbjd/Loire.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Azay-le-rideau",
+        "duration": "1h45",
+        "distance": "6,5km",
+        "river": "L'Indre",
+        "imageUrl": "https://i.ibb.co/92gk4Gr/Azay-Le-Rideau.jpg"
+    },
+    {
+        "id": "9",
+        "name": "Pont-de-Ruan - Artannes-sur-Indre",
+        "duration": "2h15",
+        "distance": "7,6km",
+        "river": "L'Indre",
+        "imageUrl": "https://i.ibb.co/6mChqPm/Pont-De-Ruan.jpg"
+    },
+    {
+        "id": "10",
+        "name": "Savonnières",
+        "duration": "2h",
+        "distance": "7,5km",
+        "river": "Le Cher",
+        "imageUrl": "https://i.ibb.co/C2s9Kjd/Montbazon.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Artannes-sur-Indre",
+        "duration": "2h",
+        "distance": "7,9km",
+        "river": "L'Indre",
+        "imageUrl": "https://i.ibb.co/kHwLYwf/Artannes.jpg"
+    }
+]

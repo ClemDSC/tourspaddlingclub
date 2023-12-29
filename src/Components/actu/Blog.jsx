@@ -50,7 +50,7 @@ export default function Blog() {
                 Conseils
               </Heading>
             </CardHeader>
-            <CardBody pt={2}>
+            <CardBody pt={2} mb={4}>
               <Image
                 mx="auto"
                 boxSize="200px"
@@ -72,7 +72,7 @@ export default function Blog() {
                 Actualités
               </Heading>
             </CardHeader>
-            <CardBody pt={2}>
+            <CardBody pt={2} mb={4}>
               <Image
                 mx="auto"
                 boxSize="200px"
@@ -94,7 +94,7 @@ export default function Blog() {
                 Nos sorties
               </Heading>
             </CardHeader>
-            <CardBody pt={2}>
+            <CardBody pt={2} mb={4}>
               <Image
                 mx="auto"
                 boxSize="200px"

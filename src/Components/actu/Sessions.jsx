@@ -1,6 +1,7 @@
-import { Box, Divider, AbsoluteCenter, Text, Image } from "@chakra-ui/react";
+import { Box, Divider, AbsoluteCenter } from "@chakra-ui/react";
 
-import Sortie from "../../Assets/sortie-automne.jpg"
+import SessionDetail from "./SessionDetail";
+import data from "../../Data/data.json";
 
 function Sessions() {
   return (
@@ -16,11 +17,12 @@ function Sessions() {
           Nos sorties
         </AbsoluteCenter>
       </Box>
+
       <Box>
-        <Image objectFit="cover" src={Sortie} alt="Tours Paddling Club - sortie nature" />
+        {data.map((session) => (
+          <SessionDetail key={session.id} session={session} />
+        ))}
       </Box>
-      <Text align="center" pt={6}>Cette page est en cours de construction.</Text>
-      <Text align="center" pb={6}>Retrouvez bientôt les comptes-rendus de nos sorties. </Text>
     </Box>
   );
 }
