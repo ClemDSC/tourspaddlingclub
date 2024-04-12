@@ -4,8 +4,8 @@ function SessionDetail({ session }) {
   return (
     <Flex
       bg="#edf3f8"
-      p={8}
-      w="full"
+      py={8}
+      w={{ base : "full", md:"50%"}}
       alignItems="center"
       justifyContent="center"
     >

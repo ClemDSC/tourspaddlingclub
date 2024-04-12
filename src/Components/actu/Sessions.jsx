@@ -1,4 +1,4 @@
-import { Box, Divider, AbsoluteCenter } from "@chakra-ui/react";
+import { Box, Divider, AbsoluteCenter, Flex } from "@chakra-ui/react";
 
 import SessionDetail from "./SessionDetail";
 import data from "../../Data/data.json";
@@ -18,11 +18,11 @@ function Sessions() {
         </AbsoluteCenter>
       </Box>
 
-      <Box>
+      <Flex direction={{ base: "column", md: "row" }} wrap={{ md: "wrap" }} bg="#edf3f8">
         {data.map((session) => (
           <SessionDetail key={session.id} session={session} />
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 }

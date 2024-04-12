@@ -44,6 +44,7 @@ const SocialButton = ({ children, label, href }) => {
 };
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <Box
       bg={useColorModeValue("blue.50", "gray.900")}
@@ -74,7 +75,7 @@ export default function Footer() {
           align={{ base: "center", md: "center" }}
         >
           <Flex>
-            <Text>© 2023 Tours Paddling Club - Tous droits réservés</Text>
+            <Text>© {year} Tours Paddling Club - Tous droits réservés</Text>
             <Link href="/mentions-legales" pl={4}>Mentions légales</Link>
           </Flex>
           <Stack direction={"row"} spacing={6}>

@@ -12,7 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import Pdf1 from "../Assets/formulaires/Adhesion_TPC_2023.pdf";
+import Pdf1 from "../Assets/formulaires/formulaire_adhesion_TPC_2024.pdf";
 import Pdf2 from "../Assets/formulaires/Pret_materiel_TPC.pdf";
 
 export default function Faq() {
@@ -172,7 +172,7 @@ export default function Faq() {
               cursor={"pointer"}
               color={"blue.300"}
             >
-              formulaire d’inscription 2023
+              formulaire d’inscription 2024
             </Text>
             . Si nécessaire, remplissez également le{" "}
             <Text

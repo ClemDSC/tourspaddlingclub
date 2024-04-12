@@ -21,21 +21,12 @@ export default function HomeJoin() {
           </Box>
           <Box>
             <Text as="b">
-              Tarifs saison 2023 : Du 1er janvier au 31 décembre 2023
+              Tarifs saison 2024 : Du 1er janvier au 31 décembre 2024
             </Text>
             <Text>Cotisation à l’association Tours Paddling Club : 50€</Text>
             <Text>Licence FFS « Surf Club » Loisir : 35€</Text>
             <Text>Licence FFS « Surf Club » Compétition : 40€</Text>
             <Text>Forfait prêt de matériel : 60€</Text>
-          </Box>
-          <Box>
-            <Text as="b">
-              Tarifs saison 2023 / 2024 : Du 1er septembre 2023 au 31 décembre
-              2024
-            </Text>
-            <Text>Cotisation à l’association Tours Paddling Club : 75€</Text>
-            <Text>Licence FFS « Surf Club » primo licencié : 45€</Text>
-            <Text>Forfait prêt de matériel : 90€</Text>
           </Box>
         </Flex>
       </Flex>
