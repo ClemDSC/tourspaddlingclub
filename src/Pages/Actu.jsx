@@ -1,9 +1,4 @@
-import {
-  Box,
-  Divider,
-  AbsoluteCenter,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Divider, AbsoluteCenter, Flex } from "@chakra-ui/react";
 
 import { db } from "../firebase-config";
 import { onValue, ref } from "firebase/database";
@@ -16,12 +11,22 @@ export default function Actu() {
 
   useEffect(() => {
     onValue(ref(db, "articles/"), (snapshot) => {
-      setArticles([]);
       const data = snapshot.val();
       if (data !== null) {
-        Object.values(data).map((article) => {
-          setArticles((articles) => [...articles, article]);
+        console.log("data : ", data);
+        const articlesArray = Object.values(data).map((article) => {
+          const [day, month, year] = article.date.split("/");
+          const date = new Date(year, month - 1, day);
+          return {
+            ...article,
+            date: date,
+          };
         });
+        console.log(articlesArray);
+
+        articlesArray.sort((a, b) => b.date - a.date);
+
+        setArticles(articlesArray);
       }
     });
   }, []);
@@ -46,9 +51,10 @@ export default function Actu() {
         flexDirection={{ base: "column", md: "row" }}
         flexWrap={{ md: "wrap" }}
       >
-        {articles && articles.map((article) => (
-        <Article key={article.id} article={article} />
-      ))}
+        {articles &&
+          articles.map((article) => (
+            <Article key={article.id} article={article} />
+          ))}
       </Flex>
     </Box>
   );
