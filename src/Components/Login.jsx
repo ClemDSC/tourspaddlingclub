@@ -7,6 +7,7 @@ import {
   ModalCloseButton,
   Button,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -21,7 +22,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState(""); // État pour stocker le message d'erreur
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -33,6 +34,7 @@ function Login() {
         navigate("/member");
       })
       .catch((error) => {
+        setError("Les identifiants sont incorrects. Veuillez réessayer."); // Définir le message d'erreur
         console.log("error", error);
       });
   };
@@ -64,7 +66,15 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Button colorScheme='linkedin' type="submit">Connexion</Button>
+              <Button colorScheme="linkedin" type="submit">
+                Connexion
+              </Button>
+              {/* Affichage du message d'erreur */}
+              {error && (
+                <Text color="red.500" mt={2}>
+                  {error}
+                </Text>
+              )}
             </form>
           </ModalBody>
         </ModalContent>
