@@ -47,7 +47,9 @@ export default function Actu() {
       </Box>
       <Flex
         width={"100%"}
-        gap={4}
+        maxW={"1200px"}
+        gap={8}
+        mx={"auto"}
         flexDirection={{ base: "column", md: "row" }}
         flexWrap={{ md: "wrap" }}
       >

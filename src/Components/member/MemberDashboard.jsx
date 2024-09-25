@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Button,
   Heading,
   Stack,
@@ -16,6 +17,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { ref, onValue, remove } from "firebase/database";
 import { Link, useNavigate } from "react-router-dom";
+import FileUploadModal from "./FileUploadModal";
 
 function MemberDashboard() {
   const [articles, setArticles] = useState([]);
@@ -76,13 +78,17 @@ function MemberDashboard() {
       <Heading mb={6}>Bienvenue sur votre espace membre</Heading>
 
       <Stack spacing={4}>
-        <Button
-          width={"fit-content"}
-          colorScheme="blue"
-          onClick={handlePublishArticle}
-        >
-          Publier un nouvel article
-        </Button>
+        <Flex gap={4} wrap={'wrap'}>
+          <Button
+            width={"fit-content"}
+            colorScheme="blue"
+            onClick={handlePublishArticle}
+          >
+            Publier un nouvel article
+          </Button>
+          <FileUploadModal document={"Bulletin d'adhésion"} route={"adhesion"} />
+          <FileUploadModal document={"Formulaire de prêt"} route={"pret"} />
+        </Flex>
 
         {/* Liste des articles existants */}
         <Heading size="md" mt={8}>

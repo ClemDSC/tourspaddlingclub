@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   Divider,
@@ -10,18 +11,48 @@ import {
 
 import Pdf1 from "../Assets/formulaires/formulaire_adhesion_TPC_2024.pdf";
 import Pdf2 from "../Assets/formulaires/Pret_materiel_TPC.pdf";
+import { storage } from "../firebase-config";
+import { getDownloadURL, ref } from "firebase/storage";
 
 import Club from "../Assets/join-club.jpeg";
 import FFS from "../Assets/logos/ffs-OFFICIEL.png";
 import { Link } from "react-router-dom";
 
 export default function JoinUs() {
+  const [adhesionUrl, setAdhesionUrl] = useState(null);
+  const [pretUrl, setPretUrl] = useState(null);
+
+  useEffect(() => {
+    const fetchDocumentUrls = async () => {
+      try {
+        // Références des fichiers dans Firebase Storage
+        const adhesionRef = ref(storage, "documents/adhesion/formulaire_adhesion_TPC_2024.pdf");
+        const pretRef = ref(storage, "documents/pret/Pret_materiel_TPC.pdf");
+
+        // Récupération des URLs de téléchargement
+        const adhesionUrl = await getDownloadURL(adhesionRef);
+        const pretUrl = await getDownloadURL(pretRef);
+
+        setAdhesionUrl(adhesionUrl);
+        setPretUrl(pretUrl);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des fichiers :", error);
+      }
+    };
+
+    fetchDocumentUrls();
+  }, []);
+
   const handleDownload = () => {
-    window.open(Pdf1, "_blank");
+    if (adhesionUrl) {
+      window.open(adhesionUrl, "_blank");
+    }
   };
 
   const handleDownload2 = () => {
-    window.open(Pdf2, "_blank");
+    if (pretUrl) {
+      window.open(pretUrl, "_blank");
+    }
   };
 
   return (

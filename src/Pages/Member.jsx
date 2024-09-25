@@ -1,7 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import { Box, Button, Divider, Flex } from "@chakra-ui/react";
 import { Outlet, useNavigate } from "react-router-dom";
-import MemberDashboard from "../Components/member/MemberDashboard";
 
 function Member() {
   const { authUser, logout } = useAuth(); // Utilisation du contexte Auth
