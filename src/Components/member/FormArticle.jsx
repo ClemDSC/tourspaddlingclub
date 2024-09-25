@@ -9,8 +9,10 @@ import {
   ModalFooter,
   useDisclosure,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import { db } from "../../firebase-config";
 import { set, ref } from "firebase/database";
@@ -28,8 +30,10 @@ function FormArticle() {
   const [imageUrl, setImageUrl] = useState("");
   const [altUrl, setAltUrl] = useState("");
   const [previewData, setPreviewData] = useState({}); // Stocker les données pour la prévisualisation
+  const navigate = useNavigate();
+  const toast = useToast();
 
-  const postArticle = () => {
+  const postArticle = async () => {
     const content = editorRef.current.getContent();
     const data = {
       id: uid(),
@@ -45,16 +49,40 @@ function FormArticle() {
       content: content,
     };
 
-    set(ref(db, "articles/" + data.id), data);
+    try {
+      // Tentative de poster l'article dans la base de données
+      await set(ref(db, "articles/" + data.id), data);
 
-    setTitle("");
-    setLink("");
-    setImageUrl("");
-    setAltUrl("");
-    editorRef.current.setContent("");
+      // Réinitialisation des champs après succès
+      setTitle("");
+      setLink("");
+      setImageUrl("");
+      setAltUrl("");
+      editorRef.current.setContent("");
 
-    console.log("Article envoyé", data);
-    onClose(); // Fermer la modale après l'envoi
+      // Fermeture de la modale et affichage du toast de succès
+      onClose();
+      toast({
+        title: "Contenu envoyé.",
+        description: "Votre contenu a bien été enregistré.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+
+      // Redirection après succès
+      navigate("/dashboard");
+    } catch (error) {
+      // Gestion de l'erreur avec un toast d'erreur
+      toast({
+        title: "Erreur lors de l'envoi.",
+        description: `Une erreur s'est produite : ${error.message}`,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      console.error("Erreur lors de l'envoi du contenu : ", error);
+    }
   };
 
   const handlePreview = (e) => {

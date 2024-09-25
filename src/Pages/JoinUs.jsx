@@ -9,10 +9,10 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import Pdf1 from "../Assets/formulaires/formulaire_adhesion_TPC_2024.pdf";
-import Pdf2 from "../Assets/formulaires/Pret_materiel_TPC.pdf";
-import { storage } from "../firebase-config";
-import { getDownloadURL, ref } from "firebase/storage";
+
+import { storage, db } from "../firebase-config";
+import { onValue, ref as dbRef } from "firebase/database";
+import { getDownloadURL, ref as storageRef } from "firebase/storage";
 
 import Club from "../Assets/join-club.jpeg";
 import FFS from "../Assets/logos/ffs-OFFICIEL.png";
@@ -26,8 +26,8 @@ export default function JoinUs() {
     const fetchDocumentUrls = async () => {
       try {
         // Références des fichiers dans Firebase Storage
-        const adhesionRef = ref(storage, "documents/adhesion/formulaire_adhesion_TPC_2024.pdf");
-        const pretRef = ref(storage, "documents/pret/Pret_materiel_TPC.pdf");
+        const adhesionRef = storageRef(storage, "documents/adhesion/formulaire_adhesion_TPC_2024.pdf");
+        const pretRef = storageRef(storage, "documents/pret/Pret_materiel_TPC.pdf");
 
         // Récupération des URLs de téléchargement
         const adhesionUrl = await getDownloadURL(adhesionRef);
@@ -41,6 +41,20 @@ export default function JoinUs() {
     };
 
     fetchDocumentUrls();
+  }, []);
+
+  const [horaireTarifs, setHoraireTarifs] = useState(null);
+
+  useEffect(() => {
+    const contentRef = dbRef(db, "horaires-tarifs");
+    onValue(contentRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Prendre le dernier contenu posté
+        const latestEntry = Object.values(data).pop();
+        setHoraireTarifs(latestEntry);
+      }
+    });
   }, []);
 
   const handleDownload = () => {
@@ -109,19 +123,11 @@ export default function JoinUs() {
           justifyContent={{ md: "center" }}
           pl={{ md: 10 }}
         >
-          <Box>
-            <Text as="b">Horaires</Text>
-            <Text>Dimanche 14h-18h (lieu selon le planning)</Text>
-          </Box>
-          <Box>
-            <Text as="b">
-              Tarifs saison 2024 : Du 1er janvier au 31 décembre 2024
-            </Text>
-            <Text>Cotisation à l’association Tours Paddling Club : 50€</Text>
-            <Text>Licence FFS « Surf Club » Loisir : 35€</Text>
-            <Text>Licence FFS « Surf Club » Compétition : 40€</Text>
-            <Text>Forfait prêt de matériel : 60€</Text>
-          </Box>
+          {horaireTarifs ? (
+            <Box dangerouslySetInnerHTML={{ __html: horaireTarifs.content }} />
+          ) : (
+            <Text>Chargement...</Text>
+          )}
         </Flex>
       </Flex>
       <Center>

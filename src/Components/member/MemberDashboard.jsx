@@ -12,6 +12,8 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
+  Divider,
+  AbsoluteCenter,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
@@ -27,8 +29,12 @@ function MemberDashboard() {
   const toast = useToast();
 
   const navigate = useNavigate();
+  const handlePublishHoraireTarifs = () => {
+    navigate("/dashboard/post-horaires-tarifs");
+  };
+
   const handlePublishArticle = () => {
-    navigate("/dashboard/post-article"); // Redirige vers le formulaire d'article
+    navigate("/dashboard/post-article");
   };
 
   useEffect(() => {
@@ -75,25 +81,62 @@ function MemberDashboard() {
 
   return (
     <Box width={{ md: "60%" }} mx={{ md: "auto" }} py={{ md: "16px" }}>
-      <Heading mb={6}>Bienvenue sur votre espace membre</Heading>
+      <Heading fontSize="3xl" mb={6}>
+        Bienvenue sur votre espace membre
+      </Heading>
 
       <Stack spacing={4}>
-        <Flex gap={4} wrap={'wrap'}>
+        <Stack mb={8}>
+          <Box position="relative" padding="10">
+            <Divider />
+            <AbsoluteCenter fontSize="xl" bg="white" px="4">
+              Gestion des documents administratifs
+            </AbsoluteCenter>
+          </Box>
+          <Flex gap={4} wrap={"wrap"}>
+            <FileUploadModal
+              document={"Bulletin d'adhésion"}
+              route={"adhesion"}
+            />
+            <FileUploadModal document={"Formulaire de prêt"} route={"pret"} />
+          </Flex>
+        </Stack>
+
+        <Stack mb={8}>
+          <Box position="relative" padding="10">
+            <Divider />
+            <AbsoluteCenter fontSize="xl" bg="white" px="4">
+              Horaires & Tarifs
+            </AbsoluteCenter>
+          </Box>
+          <Text mb={4}>
+            Ce contenu sera affiché à 2 endroits : sur la{" "}
+            <Text as="u">page d'accueil</Text>, ainsi que dans{" "}
+            <Text as="u">Le CLub / Rejoignez-nous</Text>.
+          </Text>
+          <Button width={"fit-content"} onClick={handlePublishHoraireTarifs}>
+            Mettre à jour les horaires & tarifs
+          </Button>
+        </Stack>
+
+        <Stack>
+          <Box position="relative" padding="10">
+            <Divider />
+            <AbsoluteCenter fontSize="xl" bg="white" px="4">
+              Gestion du contenu Le Blog / Actualités
+            </AbsoluteCenter>
+          </Box>
           <Button
+            variant="outline"
+            colorScheme="linkedin"
             width={"fit-content"}
-            colorScheme="blue"
             onClick={handlePublishArticle}
           >
-            Publier un nouvel article
+            Publier un article
           </Button>
-          <FileUploadModal document={"Bulletin d'adhésion"} route={"adhesion"} />
-          <FileUploadModal document={"Formulaire de prêt"} route={"pret"} />
-        </Flex>
+        </Stack>
 
-        {/* Liste des articles existants */}
-        <Heading size="md" mt={8}>
-          Vos articles
-        </Heading>
+        <Text mt={4}>Liste des articles publiés :</Text>
         {articles.length > 0 ? (
           articles.map((article) => (
             <Box
@@ -107,9 +150,15 @@ function MemberDashboard() {
               <Text>{article.date}</Text>
               <Stack direction="row" spacing={4} mt={4}>
                 <Link to={`/dashboard/edit-article/${article.id}`}>
-                  <Button colorScheme="yellow">Modifier</Button>
+                  <Button variant="outline" colorScheme="yellow">
+                    Modifier
+                  </Button>
                 </Link>
-                <Button colorScheme="red" onClick={() => openModal(article.id)}>
+                <Button
+                  variant="outline"
+                  colorScheme="red"
+                  onClick={() => openModal(article.id)}
+                >
                   Supprimer
                 </Button>
               </Stack>
