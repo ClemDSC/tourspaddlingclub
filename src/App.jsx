@@ -3,17 +3,20 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 
 import Home from "./Pages/Home";
-import Activities from "./Pages/Activities"
-import JoinUs from "./Pages/JoinUs"
-import Actu from "./Pages/Actu"
-import Contact from "./Pages/Contact"
+import Activities from "./Pages/Activities";
+import JoinUs from "./Pages/JoinUs";
+import Actu from "./Pages/Actu";
+import Contact from "./Pages/Contact";
 import Footer from "./Components/Footer";
 import Legal from "./Pages/Legal";
 import Faq from "./Pages/Faq";
 import Blog from "./Components/actu/Blog";
 import Tips from "./Components/actu/Tips";
 import Sessions from "./Components/actu/Sessions";
-import Member from "./Pages/Member"; 
+import Member from "./Pages/Member";
+import MemberDashboard from "./Components/member/MemberDashboard";
+import FormArticle from "./Components/member/FormArticle";
+import EditArticle from "./Components/member/EditArticle";
 
 function App() {
   return (
@@ -34,7 +37,12 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="mentions-legales" element={<Legal />} />
         <Route path="faq" element={<Faq />} />
-        <Route path="member" element={<Member />} />
+
+        <Route path="dashboard" element={<Member />}>
+          <Route index element={<MemberDashboard />} />{" "}
+          <Route path="post-article" element={<FormArticle />} />
+          <Route path="edit-article/:id" element={<EditArticle />} />
+        </Route>
       </Routes>
       <Footer />
     </div>

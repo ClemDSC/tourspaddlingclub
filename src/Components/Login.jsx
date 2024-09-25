@@ -10,31 +10,39 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "../context/AuthContext"; // Utilisation du contexte d'authentification
 
 function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // État pour stocker le message d'erreur
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Utilisation du hook `useAuth` pour récupérer les infos de l'utilisateur connecté
+  const { authUser } = useAuth();
+
+  useEffect(() => {
+    // Si l'utilisateur est déjà connecté, rediriger vers /dashboard
+    if (authUser) {
+      onClose(); // Ferme la modale si elle est ouverte
+    }
+  }, [authUser, navigate, onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        onClose();
-        navigate("/member");
+      .then(() => {
+        onClose(); // Fermer la modale après la connexion réussie
+        navigate("/dashboard"); // Rediriger vers /dashboard
       })
       .catch((error) => {
-        setError("Les identifiants sont incorrects. Veuillez réessayer."); // Définir le message d'erreur
+        setError("Les identifiants sont incorrects. Veuillez réessayer.");
         console.log("error", error);
       });
   };

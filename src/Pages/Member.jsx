@@ -1,38 +1,15 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase-config";
+import { useAuth } from "../context/AuthContext";
 import { Box, Button, Divider, Flex } from "@chakra-ui/react";
-import FormArticle from "../Components/member/FormArticle";
+import { Outlet, useNavigate } from "react-router-dom";
+import MemberDashboard from "../Components/member/MemberDashboard";
 
 function Member() {
-  const [authUser, setAuthUser] = useState(null);
-
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (authUser) => {
-      if (authUser) {
-        setAuthUser(authUser);
-      } else {
-        setAuthUser(null);
-      }
-    });
-
-    return () => {
-      listen();
-    };
-  }, []);
-
+  const { authUser, logout } = useAuth(); // Utilisation du contexte Auth
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Déconnexion réussie");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+    logout();
+    navigate("/");
   };
 
   return (
@@ -48,15 +25,22 @@ function Member() {
               Connectée en tant que{" "}
               <strong>{authUser.email}</strong>
             </p>
-            <Button colorScheme='linkedin' onClick={handleLogout}>Déconnexion</Button>
+            <Button colorScheme="linkedin" onClick={handleLogout}>
+              Déconnexion
+            </Button>
           </Flex>
           <Divider my={4} />
-          <FormArticle />
+          <Outlet />
         </Box>
       ) : (
         <>
           <p>Vous n'êtes pas autorisé.</p>
-          <Button colorScheme="linkedin" onClick={() => navigate("/")}>Retour à l'accueil</Button>
+          <Button
+            colorScheme="linkedin"
+            onClick={() => navigate("/")}
+          >
+            Retour à l'accueil
+          </Button>
         </>
       )}
     </div>

@@ -14,16 +14,14 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import Logo from "./svg/Logo";
 import Login from "./Login";
+import { useAuth } from "../context/AuthContext"; 
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const { authUser } = useAuth(); 
 
   return (
     <Box>
@@ -68,23 +66,22 @@ export default function Navbar() {
             }}
           >
             <Logo width={80} />
-            {/* <Text as={'h1'} color={"white"} fontSize={36} pl={{ base: 0, md: 6 }} display={{ base: "none", md: "flex" }}>Tours Paddling Club</Text> */}
           </Link>
         </Flex>
 
         <Flex display={{ base: "none", md: "flex" }} ml={10}>
-          <DesktopNav />
+          <DesktopNav authUser={authUser} />
         </Flex>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav authUser={authUser} />
       </Collapse>
     </Box>
   );
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ authUser }) => {
   const linkColor = useColorModeValue("white", "white");
   const linkHoverColor = useColorModeValue("white", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -133,7 +130,58 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
-      <Login />
+      {!authUser && <Login />}
+      {authUser && (
+        <Link
+          p={2}
+          fontSize={"20px"}
+          fontWeight={500}
+          color={linkColor}
+          fontStyle={"italic"}
+          href="/dashboard"
+          _hover={{
+            textDecoration: "none",
+            color: linkHoverColor,
+            fontWeight: 600,
+          }}
+        >
+          Espace Membre
+        </Link>
+      )}
+    </Stack>
+  );
+};
+
+const MobileNav = ({ authUser }) => {
+  return (
+    <Stack
+      bg={useColorModeValue("white", "gray.800")}
+      p={4}
+      display={{ md: "none" }}
+      borderBottom="1px"
+      borderColor="gray.200"
+    >
+      {NAV_ITEMS.map((navItem) => (
+        <MobileNavItem key={navItem.label} {...navItem} />
+      ))}
+      {!authUser && <Login />}
+      {authUser && (
+        <Link
+          p={2}
+          fontSize={"20px"}
+          fontWeight={500}
+          color={"blue.800"}
+          fontStyle={"italic"}
+          href="/dashboard"
+          _hover={{
+            textDecoration: "none",
+            color: "blue.600",
+            fontWeight: 600,
+          }}
+        >
+          Espace Membre
+        </Link>
+      )}
     </Stack>
   );
 };
@@ -161,23 +209,6 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
         </Box>
       </Stack>
     </Link>
-  );
-};
-
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-      borderBottom="1px"
-      borderColor="gray.200"
-    >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-      <Login />
-    </Stack>
   );
 };
 
@@ -269,16 +300,12 @@ const NAV_ITEMS = [
       {
         label: "Nos sorties",
         subLabel: "",
-        href: "/blog/sessions",
+        href: "/blog/outings",
       },
     ],
   },
   {
     label: "Contact",
     href: "/contact",
-  },
-  {
-    label: "FAQ",
-    href: "/faq",
   },
 ];

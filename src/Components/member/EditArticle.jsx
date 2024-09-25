@@ -10,35 +10,52 @@ import {
   useDisclosure,
   Center,
 } from "@chakra-ui/react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { db } from "../../firebase-config";
-import { set, ref } from "firebase/database";
-import { uid } from "uid";
+import { ref, set, onValue } from "firebase/database";
+import { useParams } from "react-router-dom";
 import ButtonToDashboard from "./ButtonToDashbord";
 import Article from "../actu/Article";
+import { uid } from "uid";
 
-function FormArticle() {
+function EditArticle() {
   const editorRef = useRef(null);
+  const { id } = useParams(); // Récupérer l'ID de l'article depuis l'URL
   const { isOpen, onOpen, onClose } = useDisclosure(); // Pour gérer la modal
 
+  const [article, setArticle] = useState({});
   const [title, setTitle] = useState("");
-  const date = new Date();
   const [link, setLink] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [altUrl, setAltUrl] = useState("");
   const [previewData, setPreviewData] = useState({}); // Stocker les données pour la prévisualisation
+  const [editorReady, setEditorReady] = useState(false);
+  
+  useEffect(() => {
+    const articleRef = ref(db, "articles/" + id);
+    onValue(articleRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setArticle(data);
+        setTitle(data.title);
+        setLink(data.link);
+        setImageUrl(data.imageUrl);
+        setAltUrl(data.altUrl);
+        if (editorRef.current && editorReady) {
+          editorRef.current.setContent(data.content);
+        }
+      }
+    });
+  }, [id, editorReady]); // Ajoutez editorReady comme dépendance
+  
+  
 
   const postArticle = () => {
     const content = editorRef.current.getContent();
     const data = {
-      id: uid(),
+      id: id, // Utiliser l'ID existant pour mettre à jour l'article
       title: title,
-      date: date.toLocaleDateString({
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
       link: link,
       imageUrl: imageUrl,
       altUrl: altUrl,
@@ -47,13 +64,7 @@ function FormArticle() {
 
     set(ref(db, "articles/" + data.id), data);
 
-    setTitle("");
-    setLink("");
-    setImageUrl("");
-    setAltUrl("");
-    editorRef.current.setContent("");
-
-    console.log("Article envoyé", data);
+    console.log("Article modifié", data);
     onClose(); // Fermer la modale après l'envoi
   };
 
@@ -61,13 +72,13 @@ function FormArticle() {
     e.preventDefault();
     const content = editorRef.current.getContent();
     const previewData = {
-      id: uid(), // Utilisé pour la clé
+      id: id,
       title: title,
-      date: date,
       link: link,
       imageUrl: imageUrl,
       altUrl: altUrl,
       content: content,
+      date: new Date().toISOString(),
     };
     setPreviewData(previewData); // Stocker les données pour la prévisualisation
     onOpen(); // Ouvre la modal
@@ -117,7 +128,10 @@ function FormArticle() {
 
         <Editor
           apiKey="neho6pk99wwy7vw1crml34q6j491sdw2937zzfacemcco2ci"
-          onInit={(_evt, editor) => (editorRef.current = editor)}
+          onInit={(_evt, editor) => {
+            editorRef.current = editor;
+            setEditorReady(true); // L'éditeur est prêt
+          }}
           initialValue="<p>Saisissez votre texte ...</p>"
           init={{
             height: 500,
@@ -158,7 +172,7 @@ function FormArticle() {
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent maxWidth="1100px">
           <ModalHeader>
             <Center my={4}>Prévisualisation de l'article</Center>
           </ModalHeader>
@@ -171,7 +185,7 @@ function FormArticle() {
                 Retour
               </Button>
               <Button colorScheme="blue" onClick={postArticle}>
-                Envoyer
+                Enregistrer les modifications
               </Button>
             </ModalFooter>
           </Center>
@@ -181,4 +195,4 @@ function FormArticle() {
   );
 }
 
-export default FormArticle;
+export default EditArticle;

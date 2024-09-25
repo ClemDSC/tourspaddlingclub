@@ -13,7 +13,7 @@ import {
   import { BsThreeDotsVertical } from "react-icons/bs";
 
 function Article({article}) {
-  console.log(article.date);
+  const date = article.date ? new Date(article.date).toLocaleDateString() : 'Date non disponible';
   
   return (
     <Card width={{ md: "48%" }} key={article.id}>
@@ -22,7 +22,7 @@ function Article({article}) {
         <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
           <Box>
             <Heading size="sm">{article.title}</Heading>
-            <Text>{article.date.toLocaleDateString()}</Text>
+            <Text>{date}</Text>
           </Box>
         </Flex>
         <Link
