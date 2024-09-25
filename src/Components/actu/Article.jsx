@@ -13,6 +13,8 @@ import {
   import { BsThreeDotsVertical } from "react-icons/bs";
 
 function Article({article}) {
+  console.log(article.date);
+  
   return (
     <Card width={{ md: "48%" }} key={article.id}>
     <CardHeader>
@@ -20,7 +22,7 @@ function Article({article}) {
         <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
           <Box>
             <Heading size="sm">{article.title}</Heading>
-            <Text>{article.date}</Text>
+            <Text>{article.date.toLocaleDateString()}</Text>
           </Box>
         </Flex>
         <Link
@@ -41,10 +43,9 @@ function Article({article}) {
         objectFit="cover"
         src={article.imageUrl}
         alt={article.altUrl}
+        pb="8"
       />
-      <Text mt={8}>
-        {article.content}
-      </Text>
+      <div dangerouslySetInnerHTML={{ __html: article.content }} /> 
     </CardBody>
   </Card>
   )
