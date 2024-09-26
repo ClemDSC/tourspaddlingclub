@@ -73,3 +73,11 @@ form button{
 form button:hover{
   background-color: #008CC9;
 }
+
+.form-article label{
+  margin-top: 16px;
+}
+
+.form-article label.last-child{
+  padding-bottom: 8px;
+}
