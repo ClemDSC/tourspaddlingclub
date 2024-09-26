@@ -21,7 +21,7 @@ function Member() {
             alignItems={{ md: "center" }}
           >
             <p>
-              Connectée en tant que{" "}
+              Connecté(e) en tant que{" "}:{" "} 
               <strong>{authUser.email}</strong>
             </p>
             <Button colorScheme="linkedin" onClick={handleLogout}>

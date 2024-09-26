@@ -16,6 +16,7 @@ import Sessions from "./Components/actu/Sessions";
 import Member from "./Pages/Member";
 import MemberDashboard from "./Components/member/MemberDashboard";
 import FormHoraireTarif from "./Components/member/FormHoraireTarif";
+import FormIntro from "./Components/member/FormIntro";
 import FormArticle from "./Components/member/FormArticle";
 import EditArticle from "./Components/member/EditArticle";
 
@@ -41,6 +42,7 @@ function App() {
 
         <Route path="dashboard" element={<Member />}>
           <Route index element={<MemberDashboard />} />{" "}
+          <Route path="post-intro" element={<FormIntro />} />
           <Route path="post-horaires-tarifs" element={<FormHoraireTarif />} />
           <Route path="post-article" element={<FormArticle />} />
           <Route path="edit-article/:id" element={<EditArticle />} />

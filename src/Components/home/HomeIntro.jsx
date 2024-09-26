@@ -1,28 +1,43 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { ref, onValue } from "firebase/database";
+import { db } from "../../firebase-config";
+import { Flex, Heading, Text, Box } from "@chakra-ui/react";
 
 export default function HomeIntro() {
+  const [intro, setIntro] = useState(null);
+
+  useEffect(() => {
+    const contentRef = ref(db, "intro");
+    onValue(contentRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Prendre le dernier contenu posté
+        const latestEntry = Object.values(data).pop();
+        setIntro(latestEntry);
+      }
+    });
+  }, []);
+
   return (
-    <Flex flexDirection="column" as="article" px={{base:'4', md:"24"}} pt='8' gap={"4"} maxWidth={"1400px"} mx={'auto'}>
+    <Flex
+      flexDirection="column"
+      as="article"
+      px={{ base: "4", md: "24" }}
+      pt="8"
+      gap={"4"}
+      maxWidth={"1400px"}
+      mx={"auto"}
+    >
       <Heading as="h2" align="center" pb="2" fontFamily="Raleway">
         Bienvenue !
       </Heading>
-      <Text>
-        L’association <Text as="b">Tours Paddling Club</Text>, créée le 17
-        Février 2015, est basée à Tours (Indre-et-Loire - 37), et permet de
-        regrouper les pratiquants de <Text as="i">Stand Up Paddle</Text> (Sup
-        individuel, Goliath, Dragon), et s'initier à de nouvelles pratiques de
-        glisse (Wing, Bungee surf ...).
-      </Text>
-      <Text>
-        Notre but est de développer ses activités en Touraine, en faisant
-        notamment découvrir notre passion à travers des animations, photos et
-        vidéos .
-      </Text>
-      <Text>
-        Nous proposons également des initiations pour les débutants et pour les
-        adhérents des entraînements loisirs et compétitions tout au long de
-        l’année, ainsi que de nombreuses sorties en Touraine.
-      </Text>
+      <Flex>
+        {intro ? (
+          <Box dangerouslySetInnerHTML={{ __html: intro.content }} />
+        ) : (
+          <Text>Chargement...</Text>
+        )}
+      </Flex>
     </Flex>
   );
 }

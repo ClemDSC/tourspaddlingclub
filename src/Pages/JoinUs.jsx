@@ -92,7 +92,7 @@ export default function JoinUs() {
           cursor={"pointer"}
           color={"blue.300"}
         >
-          formulaire d’inscription 2024
+          formulaire d’inscription 
         </Text>
         , ainsi que le{" "}
         <Text

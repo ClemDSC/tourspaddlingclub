@@ -33,6 +33,10 @@ function MemberDashboard() {
     navigate("/dashboard/post-horaires-tarifs");
   };
 
+  const handlePublishIntro = () => {
+    navigate("/dashboard/post-intro");
+  };
+
   const handlePublishArticle = () => {
     navigate("/dashboard/post-article");
   };
@@ -106,17 +110,32 @@ function MemberDashboard() {
           <Box position="relative" padding="10">
             <Divider />
             <AbsoluteCenter fontSize="xl" bg="white" px="4">
-              Horaires & Tarifs
+              Gestion du contenu de la page d'Accueil
             </AbsoluteCenter>
           </Box>
-          <Text mb={4}>
-            Ce contenu sera affiché à 2 endroits : sur la{" "}
-            <Text as="u">page d'accueil</Text>, ainsi que dans{" "}
-            <Text as="u">Le CLub / Rejoignez-nous</Text>.
-          </Text>
-          <Button width={"fit-content"} onClick={handlePublishHoraireTarifs}>
-            Mettre à jour les horaires & tarifs
-          </Button>
+          <Flex gap={16}>
+            <Stack w={"50%"}>
+              <Button
+                width={"fit-content"}
+                onClick={handlePublishIntro}
+              >
+                Mettre à jour le texte d'accueil
+              </Button>
+            </Stack>
+            <Stack w={"50%"}>
+              <Button
+                width={"fit-content"}
+                onClick={handlePublishHoraireTarifs}
+              >
+                Mettre à jour les horaires & tarifs
+              </Button>
+              <Text mb={4}>
+                Ce contenu sera affiché à 2 endroits : sur la{" "}
+                <Text as="u">page d'accueil</Text>, ainsi que dans{" "}
+                <Text as="u">Le Club / Rejoignez-nous</Text>.
+              </Text>
+            </Stack>
+          </Flex>
         </Stack>
 
         <Stack>
